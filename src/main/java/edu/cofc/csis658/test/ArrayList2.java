@@ -15,6 +15,9 @@ public class ArrayList2<E> extends AbstractList<E>
 {
 
     private static final long serialVersionUID = 8683452581122892189L;
+    
+	private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
 
 
     /**
@@ -351,10 +354,11 @@ public class ArrayList2<E> extends AbstractList<E>
 
     }
 
-	@Override
+	
+    @Override
 	public E get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		rangeCheck(index);
+		return elementData(index);
 	}
 
 
@@ -362,6 +366,87 @@ public class ArrayList2<E> extends AbstractList<E>
 	public int size() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public boolean add(E e) {
+		ensureCapacityInternal(size + 1);  // Increments modCount!!
+		elementData[size++] = e;
+		return true;
+	}
+		
+	private void ensureCapacityInternal(int minCapacity) {
+
+        if (elementData == EMPTY_ELEMENTDATA) {
+
+            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+
+        }
+
+
+        ensureExplicitCapacity(minCapacity);
+
+    }
+	
+	private void ensureExplicitCapacity(int minCapacity) {
+
+        modCount++;
+
+
+        // overflow-conscious code
+
+        if (minCapacity - elementData.length > 0)
+
+            grow(minCapacity);
+
+    }
+	
+	private void grow(int minCapacity) {
+
+        // overflow-conscious code
+
+        int oldCapacity = elementData.length;
+
+        int newCapacity = oldCapacity + (oldCapacity >> 1);
+
+        if (newCapacity - minCapacity < 0)
+
+            newCapacity = minCapacity;
+
+        if (newCapacity - MAX_ARRAY_SIZE > 0)
+
+            newCapacity = hugeCapacity(minCapacity);
+
+        // minCapacity is usually close to size, so this is a win:
+
+        elementData = Arrays.copyOf(elementData, newCapacity);
+
+    }
+	
+
+	 private static int hugeCapacity(int minCapacity) {
+
+        if (minCapacity < 0) // overflow
+
+            throw new OutOfMemoryError();
+
+        return (minCapacity > MAX_ARRAY_SIZE) ?
+
+            Integer.MAX_VALUE :
+
+            MAX_ARRAY_SIZE;
+
+	}
+	
+	public static void main(String[]args) {
+		System.out.println("test begin");
+		ArrayList2<String> ar2 = new ArrayList2();
+		
+		ar2.add("test add");
+		
+		System.out.println(ar2.get(0));
+		
+		System.out.println("test end");
+
 	}
 
 }
