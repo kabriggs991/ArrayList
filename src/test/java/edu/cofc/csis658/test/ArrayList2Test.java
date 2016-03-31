@@ -24,6 +24,8 @@ public class ArrayList2Test {
 		System.out.println("test begin");
 		ArrayList2<String> ar2 = new ArrayList2();
 		
+		ar2.add("string");
+		
 		setA.add("String1");
 		setA.add("String2");
 		setA.add("String3");
