@@ -1,6 +1,13 @@
 package edu.cofc.csis658.test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
@@ -353,6 +360,45 @@ public class ArrayList2<E> extends AbstractList<E>
         }
 
     }
+    
+    public boolean addAll(int index, Collection<? extends E> c) {
+
+        rangeCheckForAdd(index);
+
+
+        Object[] a = c.toArray();
+
+        int numNew = a.length;
+
+        ensureCapacityInternal(size + numNew);  // Increments modCount
+
+
+        int numMoved = size - index;
+
+        if (numMoved > 0)
+
+            System.arraycopy(elementData, index, elementData, index + numNew,
+
+                             numMoved);
+
+
+        System.arraycopy(a, 0, elementData, index, numNew);
+
+        size += numNew;
+
+        return numNew != 0;
+
+    }
+    
+    private void rangeCheckForAdd(int index) {
+
+        if (index > size || index < 0)
+
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+
+    }
+
+
 
 	
     @Override
@@ -443,6 +489,16 @@ public class ArrayList2<E> extends AbstractList<E>
 		
 		ar2.add("test add");
 		
+		try {
+			FileOutputStream out = new FileOutputStream("test.txt");
+	        ObjectOutputStream oout = new ObjectOutputStream(out);
+	        
+			ar2.writeObject(oout);
+	        oout.writeObject(new String("ttesesese"));
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		} 
 		System.out.println(ar2.get(0));
 		
 		System.out.println("test end");
