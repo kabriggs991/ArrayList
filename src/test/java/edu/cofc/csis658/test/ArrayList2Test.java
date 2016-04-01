@@ -40,41 +40,40 @@ public class ArrayList2Test {
 	}
 
 
-@Test
-public void addAllNumMovedequalToZero() {
-	System.out.println("test begin");
-	ArrayList2<String> ar2 = new ArrayList2();
-	
-	ar2.add("string");
+	@Test
+	public void addAllNumMovedequalToZero() {
+		System.out.println("test begin");
+		ArrayList2<String> ar2 = new ArrayList2();
 
-	setA.add("String1");
-	setA.add("String2");
-	setA.add("String3");
-	
-	boolean mod = ar2.addAll(1, setA);
+		ar2.add("string");
 
-	assertTrue(mod);
+		setA.add("String1");
+		setA.add("String2");
+		setA.add("String3");
 
-	System.out.println("test end");
-}
+		boolean mod = ar2.addAll(1, setA);
+
+		assertTrue(mod);
+
+		System.out.println("test end");
+	}
 
 
-@Test
-public void addAllNumNewEqualZero() {
-	System.out.println("test begin");
-	ArrayList2<String> ar2 = new ArrayList2();
-	
-	ar2.add("string");
-	ar2.add("string2");
-	ar2.add("string3");
-	
+	@Test
+	public void addAllNumNewEqualZero() {
+		System.out.println("test begin");
+		ArrayList2<String> ar2 = new ArrayList2();
 
-	
-	boolean mod = ar2.addAll(3, setA);
+		ar2.add("string");
+		ar2.add("string2");
+		ar2.add("string3");
 
-	assertFalse(mod);
 
-	System.out.println("test end");
-}
+		boolean mod = ar2.addAll(3, setA);
+
+		assertFalse(mod);
+
+		System.out.println("test end");
+	}
 
 }
