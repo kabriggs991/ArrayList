@@ -68,7 +68,6 @@ public class ArrayList2Test {
 		ar2.add("string2");
 		ar2.add("string3");
 
-
 		boolean mod = ar2.addAll(3, setA);
 
 		assertFalse(mod);
