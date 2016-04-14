@@ -59,6 +59,24 @@ public class ArrayList2_lastIndexOf_Test {
     }
 
     @Test
+    public void indexOfNull() {
+        System.out.println("test begin");
+        ArrayList2<Integer> testArray = new ArrayList2();
+
+        testArray.add(1);
+        testArray.add(4);
+        testArray.add(5);
+        testArray.add(6);
+        testArray.add(2);
+
+        int returnValue = testArray.lastIndexOf(null);
+
+        assertEquals(-1,returnValue);
+
+        System.out.println("test end");
+    }
+
+    @Test
     public void indexOfElementNotInList() {
         System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
