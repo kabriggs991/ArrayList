@@ -32,7 +32,7 @@ public class ArrayList2_lastIndexOf_Test {
         testArray.add(2);
         testArray.add(4);
 
-        int returnValue = testArray.indexOf(7);
+        int returnValue = testArray.indexOf(6);
 
         assertEquals(4,returnValue);
 
@@ -70,7 +70,7 @@ public class ArrayList2_lastIndexOf_Test {
         testArray.add(3);
         testArray.add(2);
 
-        int returnValue = testArray.indexOf(4);
+        int returnValue = testArray.indexOf(7);
 
         assertEquals(-1,returnValue);
 
