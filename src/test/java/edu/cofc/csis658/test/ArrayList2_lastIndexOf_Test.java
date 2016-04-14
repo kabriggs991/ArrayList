@@ -40,7 +40,7 @@ public class ArrayList2_lastIndexOf_Test {
     }
 
     @Test
-    public void indexOfNull() {
+    public void lastIndexOfNull() {
         System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
@@ -59,7 +59,7 @@ public class ArrayList2_lastIndexOf_Test {
     }
 
     @Test
-    public void indexOfNull() {
+    public void lastIndexOfNotNull() {
         System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
@@ -77,7 +77,7 @@ public class ArrayList2_lastIndexOf_Test {
     }
 
     @Test
-    public void indexOfElementNotInList() {
+    public void lastIndexOfElementNotInList() {
         System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
