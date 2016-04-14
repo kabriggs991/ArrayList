@@ -482,27 +482,42 @@ public class ArrayList2<E> extends AbstractList<E>
             MAX_ARRAY_SIZE;
 
 	}
-	
-	public static void main(String[]args) {
-		System.out.println("test begin");
-		ArrayList2<String> ar2 = new ArrayList2();
-		
-		ar2.add("test add");
-		
-		try {
-			FileOutputStream out = new FileOutputStream("test.txt");
-	        ObjectOutputStream oout = new ObjectOutputStream(out);
-	        
-			ar2.writeObject(oout);
-	        oout.writeObject(new String("ttesesese"));
-		} catch(Exception e) {
-			e.printStackTrace();
-			
-		} 
-		System.out.println(ar2.get(0));
-		
-		System.out.println("test end");
+	 
+	 /**
 
-	}
+	     * Increases the capacity of this <tt>ArrayList</tt> instance, if
 
+	     * necessary, to ensure that it can hold at least the number of elements
+
+	     * specified by the minimum capacity argument.
+
+	     *
+
+	     * @param   minCapacity   the desired minimum capacity
+
+	     */
+
+	    public void ensureCapacity(int minCapacity) {
+
+	        int minExpand = (elementData != EMPTY_ELEMENTDATA)
+
+	            // any size if real element table
+
+	            ? 0
+
+	            // larger than default for empty table. It's already supposed to be
+
+	            // at default size.
+
+	            : DEFAULT_CAPACITY;
+
+
+	        if (minCapacity > minExpand) {
+
+	            ensureExplicitCapacity(minCapacity);
+
+	        }
+
+	    }
+	    
 }
