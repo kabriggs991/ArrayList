@@ -119,37 +119,6 @@ public class ArrayList2<E> extends AbstractList<E>
 
     /**
 
-     * Constructs a list containing the elements of the specified
-
-     * collection, in the order they are returned by the collection's
-
-     * iterator.
-
-     *
-
-     * @param c the collection whose elements are to be placed into this list
-
-     * @throws NullPointerException if the specified collection is null
-
-     */
-
-    public ArrayList2(Collection<? extends E> c) {
-
-        elementData = c.toArray();
-
-        size = elementData.length;
-
-        // c.toArray might (incorrectly) not return Object[] (see 6260652)
-
-        if (elementData.getClass() != Object[].class)
-
-            elementData = Arrays.copyOf(elementData, size, Object[].class);
-
-    }
-
-    
-    /**
-
      * Returns the index of the first occurrence of the specified element
 
      * in this list, or -1 if this list does not contain the element.
