@@ -410,8 +410,7 @@ public class ArrayList2<E> extends AbstractList<E>
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 	
 	public boolean add(E e) {

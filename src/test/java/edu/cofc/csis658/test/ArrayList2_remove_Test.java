@@ -1,7 +1,6 @@
 package edu.cofc.csis658.test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,10 +17,11 @@ public class ArrayList2_remove_Test {
 		
 		ar.add("element");
 
-		assert(ar.size() == 1);
+		int x = ar.size();
+		assertEquals(x, 1);
 		
 		ar.remove(0);
-		assert(ar.size() == 0);
+		assertEquals(ar.size(), 0);
 	
 		System.out.println("test: numMovedEqualToZero end ");
 	}
@@ -36,11 +36,12 @@ public class ArrayList2_remove_Test {
 		ar2.add("string");
 		ar2.add("string");
 		
-		assert(ar2.size() == 3);
+		int x = ar2.size();
+		assertEquals(x, 3);
 		
 		ar2.remove(1);
 
-		assert(ar2.size() == 2);
+		assertEquals(ar2.size(), 2);
 	
 		System.out.println("test: numMovedGreaterThanZero end");
 	}
