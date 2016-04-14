@@ -3,6 +3,8 @@ package edu.cofc.csis658.test;
 import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +13,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	int minCapacity;
 	int finalCapacity;
+	private Set<String> setA;
 	
 	@Before
 	public void setup() {
@@ -64,6 +67,32 @@ public class ArrayList2_ensureCapacity_Test {
 			e.printStackTrace();
 		}
 		assertTrue(finalCapacity == 0);
+	
+	}
+	
+	@Test
+	public void minCapacityInitialCapacity5() {
+		minCapacity = 5;
+		int intialCapacity = 10;
+		
+		ArrayList2<String> ar2 = new ArrayList2(intialCapacity);
+	
+		try {
+			ar2.ensureCapacity(minCapacity);
+			finalCapacity = getCapacity(ar2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(finalCapacity == 10);
+	
+	}
+	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void minCapacityIllegalArgumentException() {
+		minCapacity = Integer.MAX_VALUE;
+		
+		ArrayList2<String> ar2 = new ArrayList2(-1);
 	
 	}
 	
