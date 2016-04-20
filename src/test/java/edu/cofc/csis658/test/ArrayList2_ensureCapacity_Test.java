@@ -1,10 +1,8 @@
 package edu.cofc.csis658.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +11,6 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	int minCapacity;
 	int finalCapacity;
-	private Set<String> setA;
 	
 	@Before
 	public void setup() {
@@ -34,12 +31,16 @@ public class ArrayList2_ensureCapacity_Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertTrue(finalCapacity == minCapacity);
+		assertEquals(finalCapacity, minCapacity);
 	
 	}
 	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 0 elements.
+	 */
 	@Test
-	public void minCapacity0() {
+	public void minCapacityZeroElements() {
 		minCapacity = 0;
 		
 		ArrayList2<String> ar2 = new ArrayList2();
@@ -50,13 +51,87 @@ public class ArrayList2_ensureCapacity_Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertTrue(finalCapacity == minCapacity);
+		assertEquals(finalCapacity, minCapacity);
 	
 	}
 	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 0 elements
+	 * and was initialized with 0.
+	 */
 	@Test
-	public void minCapacity5() {
-		minCapacity = 5;
+	public void minCapacityZeroElementsZeroInialize() {
+		minCapacity = 0;
+		
+		ArrayList2<String> ar2 = new ArrayList2(0);
+	
+		try {
+			ar2.ensureCapacity(minCapacity);
+			finalCapacity = getCapacity(ar2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertEquals(finalCapacity, minCapacity);
+	
+	}
+	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 1 element
+	 * but was initialized with 2.
+	 */
+	@Test
+	public void minCapacityOneElementTwoInialize() {
+		minCapacity = 0;
+		
+		ArrayList2<String> ar2 = new ArrayList2(2);
+		ar2.add("one");
+	
+		try {
+			ar2.ensureCapacity(minCapacity);
+			finalCapacity = getCapacity(ar2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertEquals(finalCapacity, 2);
+	
+	}
+	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 3 elements
+	 * but was initialized with 2.
+	 */
+	@Test
+	public void minCapacityThreeElementsTwoInialize() {
+		minCapacity = 0;
+		
+		ArrayList2<String> ar2 = new ArrayList2(2);
+		ar2.add("one");
+		ar2.add("two");
+		ar2.add("three");
+	
+		try {
+			ar2.ensureCapacity(minCapacity);
+			finalCapacity = getCapacity(ar2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertEquals(finalCapacity, 3);
+	
+	}
+	
+	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 0 elements
+	 * and was initialized with 0 but minCapacity to 15, which is 
+	 * larger than supposed default.
+	 */
+	@Test
+	public void minCapacityZeroInializeMinFifteen() {
+		minCapacity = 15;
 		
 		ArrayList2<String> ar2 = new ArrayList2();
 	
@@ -66,12 +141,17 @@ public class ArrayList2_ensureCapacity_Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertTrue(finalCapacity == 0);
+		assertEquals(finalCapacity, 15);
 	
 	}
 	
+	/*
+	 * Specification states that the capacity is at least the size of
+	 * the number of elements in the ArrayList. Test with 0 elements
+	 * but was initialized with 10 but minCapacity set to 5.
+	 */
 	@Test
-	public void minCapacityInitialCapacity5() {
+	public void minCapacityFiveInitialMinTen() {
 		minCapacity = 5;
 		int intialCapacity = 10;
 		
@@ -83,7 +163,7 @@ public class ArrayList2_ensureCapacity_Test {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertTrue(finalCapacity == 10);
+		assertEquals(finalCapacity, 10);
 	
 	}
 	
@@ -106,20 +186,16 @@ public class ArrayList2_ensureCapacity_Test {
 		try {
 			finalCapacity = getCapacity(ar2);
 		} catch (NoSuchFieldException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 	}
+		
 	
 	/*
 	 * This method uses reflection to gain access to 'elementData' Object in
