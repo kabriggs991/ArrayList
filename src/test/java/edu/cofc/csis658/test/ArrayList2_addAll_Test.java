@@ -21,7 +21,6 @@ public class ArrayList2_addAll_Test {
 	
 	@Test
 	public void addAllNumMovedGreaterZero() {
-		System.out.println("test begin");
 		ArrayList2<String> ar2 = new ArrayList2();
 		
 		ar2.add("string");
@@ -35,14 +34,11 @@ public class ArrayList2_addAll_Test {
 		boolean mod = ar2.addAll(1, setA);
 	
 		assertTrue(mod);
-	
-		System.out.println("test end");
-	}
+		}
 
 
 	@Test
 	public void addAllNumMovedequalToZero() {
-		System.out.println("test begin");
 		ArrayList2<String> ar2 = new ArrayList2();
 
 		ar2.add("string");
@@ -54,14 +50,11 @@ public class ArrayList2_addAll_Test {
 		boolean mod = ar2.addAll(1, setA);
 
 		assertTrue(mod);
-
-		System.out.println("test end");
 	}
 
 
 	@Test
 	public void addAllNumNewEqualZero() {
-		System.out.println("test begin");
 		ArrayList2<String> ar2 = new ArrayList2();
 
 		ar2.add("string");
@@ -72,8 +65,33 @@ public class ArrayList2_addAll_Test {
 		boolean mod = ar2.addAll(3, setA);
 
 		assertFalse(mod);
-
-		System.out.println("test end");
 	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void addAllRangeCheckExceptionTest() {
+		ArrayList2<String> ar2 = new ArrayList2();
+
+		ar2.add("string");
+		ar2.add("string2");
+		ar2.add("string3");
+
+
+		boolean mod = ar2.addAll(4, setA);
+
+	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void addAllRangeCheckException2Test() {
+		ArrayList2<String> ar2 = new ArrayList2();
+
+		ar2.add("string");
+		ar2.add("string2");
+		ar2.add("string3");
+
+
+		boolean mod = ar2.addAll(-1, setA);
+
+	}
+
 
 }
