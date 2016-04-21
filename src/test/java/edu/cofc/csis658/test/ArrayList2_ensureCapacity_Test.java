@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.lang.reflect.Field;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ArrayList2_ensureCapacity_Test {
@@ -179,6 +180,28 @@ public class ArrayList2_ensureCapacity_Test {
 	@Test(expected=OutOfMemoryError.class)
 	public void minCapacityOutOfMemoryError() {
 		minCapacity = Integer.MAX_VALUE;
+		
+		ArrayList2<String> ar2 = new ArrayList2();
+	
+		ar2.ensureCapacity(minCapacity);
+		try {
+			finalCapacity = getCapacity(ar2);
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Ignore
+	@Test
+	public void min() {
+		minCapacity = Integer.MAX_VALUE-5;
+		//minCapacity = 2147483639;
 		
 		ArrayList2<String> ar2 = new ArrayList2();
 	
