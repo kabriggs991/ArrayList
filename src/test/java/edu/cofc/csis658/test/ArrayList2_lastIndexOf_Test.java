@@ -2,7 +2,6 @@ package edu.cofc.csis658.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -14,14 +13,10 @@ public class ArrayList2_lastIndexOf_Test {
     private Set<String> setA;
 
     @Before
-    public void setup() {
-
-
-    }
+    public void setup() {}
 
     @Test
     public void indexOfLastOccurrenceOfElement() {
-        System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
         testArray.add(8);
@@ -35,13 +30,10 @@ public class ArrayList2_lastIndexOf_Test {
         int returnValue = testArray.lastIndexOf(6);
 
         assertEquals(4,returnValue);
-
-        System.out.println("test end");
     }
 
     @Test
     public void lastIndexOfNull() {
-        System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
         testArray.add(1);
@@ -55,12 +47,10 @@ public class ArrayList2_lastIndexOf_Test {
 
         assertEquals(4,returnValue);
 
-        System.out.println("test end");
     }
 
     @Test
     public void lastIndexOfNotNull() {
-        System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
         testArray.add(1);
@@ -73,12 +63,10 @@ public class ArrayList2_lastIndexOf_Test {
 
         assertEquals(-1,returnValue);
 
-        System.out.println("test end");
     }
 
     @Test
     public void lastIndexOfElementNotInList() {
-        System.out.println("test begin");
         ArrayList2<Integer> testArray = new ArrayList2();
 
         testArray.add(8);
@@ -92,7 +80,6 @@ public class ArrayList2_lastIndexOf_Test {
 
         assertEquals(-1,returnValue);
 
-        System.out.println("test end");
     }
 
 

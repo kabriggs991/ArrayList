@@ -20,6 +20,7 @@ public class ArrayList2_ensureCapacity_Test {
 		
 	}
 
+	// TC1:
 	@Test
 	public void minCapacity10000() {
 		minCapacity = 10000;
@@ -36,7 +37,8 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
-	/*
+	//TC2:
+	/* 
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 0 elements.
 	 */
@@ -56,6 +58,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
+	//TC3:
 	/*
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 0 elements
@@ -77,6 +80,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
+	//TC4:
 	/*
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 1 element
@@ -99,6 +103,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
+	//TC5:
 	/*
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 3 elements
@@ -123,7 +128,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
-	
+	//TC6:
 	/*
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 0 elements
@@ -146,6 +151,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
+	//TC7:
 	/*
 	 * Specification states that the capacity is at least the size of
 	 * the number of elements in the ArrayList. Test with 0 elements
@@ -168,7 +174,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
-	
+	//TC8:
 	@Test(expected=IllegalArgumentException.class)
 	public void minCapacityIllegalArgumentException() {
 		minCapacity = Integer.MAX_VALUE;
@@ -177,6 +183,7 @@ public class ArrayList2_ensureCapacity_Test {
 	
 	}
 	
+	//TC9:
 	@Test(expected=OutOfMemoryError.class)
 	public void minCapacityOutOfMemoryError() {
 		minCapacity = Integer.MAX_VALUE;
@@ -197,10 +204,11 @@ public class ArrayList2_ensureCapacity_Test {
 		}
 	}
 	
+	//TC:10
 	@Ignore
 	@Test
-	public void min() {
-		minCapacity = Integer.MAX_VALUE-5;
+	public void minHugeCapacityMaxIntTest() {
+		minCapacity = Integer.MAX_VALUE;
 		//minCapacity = 2147483639;
 		
 		ArrayList2<String> ar2 = new ArrayList2();
@@ -218,6 +226,29 @@ public class ArrayList2_ensureCapacity_Test {
 			e.printStackTrace();
 		}
 	}
+	
+	//TC11:
+	@Ignore
+	@Test
+	public void minHugeCapacityMaxArraySizeTest() {
+		minCapacity = 2147483638;
+		
+		ArrayList2<String> ar2 = new ArrayList2();
+	
+		ar2.ensureCapacity(minCapacity);
+		try {
+			finalCapacity = getCapacity(ar2);
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+	}
+	
 		
 	
 	/*

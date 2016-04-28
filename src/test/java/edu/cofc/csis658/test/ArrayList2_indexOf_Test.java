@@ -1,11 +1,9 @@
 package edu.cofc.csis658.test;
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class ArrayList2_indexOf_Test {
@@ -13,10 +11,7 @@ public class ArrayList2_indexOf_Test {
 		private Set<String> setA;
 		
 		@Before
-		public void setup() {
-			
-			
-		}
+		public void setup() {}
 	
 		@Test
 		public void indexOfFirstOccurrenceOfElement() {
